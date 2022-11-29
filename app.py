@@ -1,20 +1,32 @@
 from util import *
 from werkzeug.datastructures import MultiDict
+import db
+
+
 ####################### Flask settings #######################
 app = Flask(__name__)
 
+
+
 ####################### Home Page ############################
+
+@app.route("/test")
+def test():
+    db.db.test.insert_one({"name": "John"})
+    return "Connected to the data base!"
+
+
+
 @app.route("/", methods=['GET'])
 @app.route("/home", methods=['GET'])
 def home():
    return render_template("index.html")
 
+
 ########################## Results Page #######################
 @app.route("/result", methods = ["GET","POST"])
 def predict():
 	if request.method == 'POST':
-
-
 		#bro ithu tha na potta code
 
 		mutableData = MultiDict(request.form) #intha request.form immutableDict bro ithu namma explicit ah MultiDict ah matharom mela import pannirupom paru
