@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/test")
 def test():
-    db.db.test.insert_one({"name": "John"})
+    db.db.App1.insert_one({"name": "John"})
     return "Connected to the data base!"
 
 
