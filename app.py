@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/test")
 def test():
-    db.db.test.insert_one({"name": "John"})
+    db.db.app1.insert_one({"name": "John"})
     return "Connected to the data base!"
 
 
@@ -27,6 +27,23 @@ def home():
 @app.route("/result", methods = ["GET","POST"])
 def predict():
 	if request.method == 'POST':
+
+		Gender  = request.args.get('gender')
+		Age  = request.args.get('age')
+		Hypertension  = request.args.get('hypertension')
+		HeartDie  = request.args.get('heart_disease')
+		Mart  = request.args.get('ever_married')
+		Work  = request.args.get('work_type')
+		resd  = request.args.get('Residence_type')
+		gulc  = request.args.get('avg_glucose_level')
+		ht  = request.args.get('Height')
+		wt  = request.args.get('weight')
+		smk  = request.args.get('smoking_status')
+
+		
+
+
+
 		#bro ithu tha na potta code
 
 		mutableData = MultiDict(request.form) #intha request.form immutableDict bro ithu namma explicit ah MultiDict ah matharom mela import pannirupom paru
@@ -46,6 +63,23 @@ def predict():
 			else:
 				X.append(feature_dict[col])
 		proba = round(predict_class([X]),2)
+
+		myQuery = {
+			"gender":Gender,
+			"age":Age,
+			"Hypertension":Hypertension,
+			"HeartDie" : HeartDie,
+			"Mart" : Mart,
+			"Work" : Work,
+			"resd" : resd,
+			"gulc" : gulc,
+			"heart" : ht,
+			"wt" : wt,
+			"smk" : smk,
+			"proba":proba
+		}
+		
+		db.db.test.insert_one(myQuery)
 		return render_template("index.html", proba=proba)
 ####################################################
 
