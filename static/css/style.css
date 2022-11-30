@@ -1,5 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
-  background-image: url("../images/bg.webp");
+  background-color: #99eeff;
+  background-image: radial-gradient(
+      at 67% 25%,
+      hsla(317, 91%, 79%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 6% 35%, hsla(265, 90%, 71%, 1) 0px, transparent 50%),
+    radial-gradient(at 67% 0%, hsla(247, 74%, 72%, 1) 0px, transparent 50%),
+    radial-gradient(at 23% 98%, hsla(289, 80%, 68%, 1) 0px, transparent 50%),
+    radial-gradient(at 62% 31%, hsla(220, 74%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 12% 30%, hsla(199, 98%, 66%, 1) 0px, transparent 50%);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -7,4 +18,20 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   height: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.collapse {
+  justify-content: end;
+  align-items: center;
+  margin: 0 5rem;
+}
+.nav-link {
+  margin: 0 3rem;
+}
+.navbar-nav a {
+  color: rgb(21, 21, 21);
+}
+@media (min-width: 992px) {
 }

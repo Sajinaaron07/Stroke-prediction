@@ -28,18 +28,18 @@ def home():
 def predict():
 	if request.method == 'POST':
 
-		Gender  = request.args.get('gender')
-		Age  = request.args.get('age')
-		Hypertension  = request.args.get('hypertension')
-		HeartDie  = request.args.get('heart_disease')
-		Mart  = request.args.get('ever_married')
-		Work  = request.args.get('work_type')
-		resd  = request.args.get('Residence_type')
-		gulc  = request.args.get('avg_glucose_level')
-		ht  = request.args.get('Height')
-		wt  = request.args.get('weight')
-		smk  = request.args.get('smoking_status')
+		Age  = request.form.get('age')
+		Hypertension  = request.form.get('hypertension')
+		HeartDie  = request.form.get('heart_disease')
+		Mart  = request.form.get('ever_married')
+		Work  = request.form.get('work_type')
+		resd  = request.form.get('Residence_type')
+		gulc  = request.form.get('avg_glucose_level')
+		ht  = request.form.get('Height')
+		wt  = request.form.get('weight')
+		smk  = request.form.get('smoking_status')
 
+		Gender  = request.form.get('gender')
 		
 
 
@@ -88,4 +88,4 @@ def about():
 	return render_template("about.html")
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=False)
