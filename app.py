@@ -1,6 +1,7 @@
 from util import *
 from werkzeug.datastructures import MultiDict
 import db
+from datetime import date
 
 
 ####################### Flask settings #######################
@@ -15,7 +16,9 @@ def test():
     db.db.app1.insert_one({"name": "John"})
     return "Connected to the data base!"
 
-
+@app.route("/new")
+def new():
+	return render_template("result.html")
 
 @app.route("/", methods=['GET'])
 @app.route("/home", methods=['GET'])
@@ -28,17 +31,23 @@ def home():
 def predict():
 	if request.method == 'POST':
 
-		Gender  = request.args.get('gender')
-		Age  = request.args.get('age')
-		Hypertension  = request.args.get('hypertension')
-		HeartDie  = request.args.get('heart_disease')
-		Mart  = request.args.get('ever_married')
-		Work  = request.args.get('work_type')
-		resd  = request.args.get('Residence_type')
-		gulc  = request.args.get('avg_glucose_level')
-		ht  = request.args.get('Height')
-		wt  = request.args.get('weight')
-		smk  = request.args.get('smoking_status')
+		Gender  = request.form.get('gender')
+		print(Gender)
+		City = request.form.get('city')
+		Name = request.form.get('name')
+		Age  = request.form.get('age')
+		Hypertension  = request.form.get('hypertension')
+		HeartDie  = request.form.get('heart_disease')
+		Mart  = request.form.get('ever_married')
+		Work  = request.form.get('work_type')
+		resd  = request.form.get('Residence_type')
+		gulc  = request.form.get('avg_glucose_level')
+		ht  = request.form.get('Height')
+		wt  = request.form.get('weight')
+		smk  = request.form.get('smoking_status')
+		today = date.today()
+		dates = today.strftime("%d/%m/%Y")
+		print(dates)
 
 		
 
@@ -78,9 +87,9 @@ def predict():
 			"smk" : smk,
 			"proba":proba
 		}
-		
+
 		db.db.test.insert_one(myQuery)
-		return render_template("index.html", proba=proba)
+		return render_template("result.html", proba=proba,gender=Gender,age=Age,name=Name,city=City,date=dates)
 ####################################################
 
 @app.route("/about")

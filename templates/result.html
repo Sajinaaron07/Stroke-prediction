@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile and Picture</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+
+<body>
+    <section class="main">
+        <div class="card">
+            {% block result %}
+            <h1 class="head">{{name}}</h1>
+            <div class="para1">
+                <p class="item">Gender : {{gender}}</p>
+                <p class="item">Age : {{age}}</p>
+
+            </div>
+            <div class="para2">
+
+                <p class="item">City : {{city}}</p>
+                <p class="item">Date : {{date}}</p>
+            </div>
+
+            <div class="report">
+                {% if proba %}
+                <p>There is an <b>{{proba}}</b> of chance to get a stroke, don't worry it seem to be you look healthy :)
+                </p>
+                {% endif %}
+            </div>
+            {% endblock %}
+            <a href="#">
+                <button class="btn">Download report</button>
+            </a>
+
+        </div>
+    </section>
+
+</body>
+
+</html>
